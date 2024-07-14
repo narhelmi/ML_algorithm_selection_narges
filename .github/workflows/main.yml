@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: ML_algorithm_selection_narges
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up Python
@@ -18,14 +18,18 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pandas numpy matplotlib seaborn scikit-learn
+        pip install pandas numpy matplotlib seaborn scikit-learn jupyter
+
+    - name: Convert notebook to script
+      run: |
+        jupyter nbconvert --to script algorithm_selection_narges.ipynb
 
     - name: Run the script
       run: |
-        python algorithm_selection_narges.ipynb
+        python algorithm_selection_narges.py
 
     - name: Upload report
       uses: actions/upload-artifact@v2
       with:
-        name: ML algorithm selection report.pdf
-        path: ML algorithm selection report.pdfhttps://github.com/narhelmi/ML_algorithm_selection_narges/tree/main
+        name: report
+        path: ML\ algorithm\ selection\ report.pdf
