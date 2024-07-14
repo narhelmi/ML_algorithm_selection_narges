@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: ML_algorithm_selection_narges
       uses: actions/checkout@v2
 
     - name: Set up Python
@@ -27,5 +27,5 @@ jobs:
     - name: Upload report
       uses: actions/upload-artifact@v2
       with:
-        name: report
-        path: ML algorithm selection report.pdf
+        name: ML algorithm selection report.pdf
+        path: ML algorithm selection report.pdfhttps://github.com/narhelmi/ML_algorithm_selection_narges/tree/main
