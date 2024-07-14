@@ -1,13 +1,13 @@
 name: Generate Report
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up Python
@@ -21,13 +21,11 @@ jobs:
         pip install pandas numpy matplotlib seaborn scikit-learn
 
     - name: Run the script
-      run: python your_script.py
-
-    - name: Generate report
-      run: python generate_report.py
+      run: |
+        python algorithm_selection_narges.ipynb
 
     - name: Upload report
       uses: actions/upload-artifact@v2
       with:
         name: report
-        path: report.pdf
+        path: ML algorithm selection report.pdf
